@@ -40,26 +40,24 @@ function draw() {
   textFont("Courier");
   let currentString1 = string1.substring(0, currentCharacter1);
 
-  if (frameCount >= 150) {
+  if (frameCount >= 120) {
+    blink = lerp(blink, -2.5, 0.05);
+  }
+
+  if (frameCount >= 300) {
     textAlign(CENTER);
     textSize(height / 20);
     currentCharacter1 += random(0, 0.2);
 
-    text(
-      currentString1,
-      width / 2,
-      height / 1.33
-    );
+    text(currentString1, width / 2, height / 1.33);
 
     fill(fadeOut);
     text("↓", width / 2, height / 1.1);
   }
 
-  if (frameCount >= 300) {
+  if (frameCount >= 480) {
     fadeOut++;
   }
-
-  blink = lerp(blink, -2.5, 0.05);
 
   if (blink > -2.49) {
     irisX = width / 2;
