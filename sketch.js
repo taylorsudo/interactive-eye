@@ -3,6 +3,9 @@ let fadeOut = 0;
 let canvasWidth, canvasHeight;
 let eyeX, eyeY, eyeW, eyeH;
 let irisX, irisX2, irisY, irisY2, irisSize, pupilSize;
+let string1 = "Les Cyclopes";
+let currentCharacter1 = 0;
+let fadeIn = 0;
 
 function eye(x, y, w, h, lid) {
   push();
@@ -21,7 +24,7 @@ function setup() {
   canvasWidth = windowWidth;
   canvasHeight = windowHeight;
   createCanvas(canvasWidth, canvasHeight);
-  
+
   eyeH = height / 2;
   eyeW = eyeH;
   eyeX = width / 2;
@@ -33,14 +36,36 @@ function setup() {
 
 function draw() {
   background(0);
-  
+  fill(255);
+  textFont("Courier");
+  let currentString1 = string1.substring(0, currentCharacter1);
+
+  if (frameCount >= 150) {
+    textAlign(CENTER);
+    textSize(height / 20);
+    currentCharacter1 += random(0, 0.2);
+
+    text(
+      currentString1,
+      width / 2,
+      height / 1.33
+    );
+
+    fill(fadeOut);
+    text("↓", width / 2, height / 1.1);
+  }
+
+  if (frameCount >= 300) {
+    fadeOut++;
+  }
+
   blink = lerp(blink, -2.5, 0.05);
-  
+
   if (blink > -2.49) {
     irisX = width / 2;
     irisY = height / 2;
-  } 
-  
+  }
+
   irisX2 = map(
     mouseX,
     0,
@@ -56,7 +81,7 @@ function draw() {
     eyeY - eyeH / 6 + irisSize / 2,
     eyeY + eyeH / 6 - irisSize / 2
   );
-  
+
   fill(255);
   eye(eyeX, eyeY, eyeW, eyeH, 2.5);
   push();
@@ -69,5 +94,5 @@ function draw() {
   eye(eyeX, eyeY, eyeW, eyeH, blink);
 
   irisX = lerp(irisX, irisX2, 0.05);
-  irisY = lerp(irisY, irisY2, 0.05); 
+  irisY = lerp(irisY, irisY2, 0.05);
 }
