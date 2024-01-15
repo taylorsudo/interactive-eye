@@ -96,3 +96,16 @@ function draw() {
   irisX = lerp(irisX, irisX2, 0.05);
   irisY = lerp(irisY, irisY2, 0.05);
 }
+
+function windowResized() {
+  canvasWidth = windowWidth;
+  canvasHeight = windowHeight;
+  resizeCanvas(canvasWidth, canvasHeight);
+
+  eyeH = height / 2;
+  eyeW = eyeH;
+  eyeX = width / 2;
+  eyeY = height / 2;
+  irisSize = eyeW / 8;
+  pupilSize = irisSize / 2;
+}
