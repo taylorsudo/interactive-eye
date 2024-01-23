@@ -1,4 +1,3 @@
-let a;
 let blink = 3;
 let fadeOut = 0;
 let canvasWidth, canvasHeight;
@@ -25,9 +24,6 @@ function setup() {
   canvasWidth = windowWidth;
   canvasHeight = windowHeight;
   createCanvas(canvasWidth, canvasHeight);
-  a = createA('https://taylor.framer.ai/cyclopes#brief', 'X');
-  a.style('color: white; opacity: 0; font-size: 72px;');
-  a.position(width / 2.1, height / 1.33);
 
   eyeX = width / 2;
   eyeY = height / 4;
