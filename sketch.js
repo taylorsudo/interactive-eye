@@ -1,3 +1,4 @@
+let a;
 let blink = 3;
 let fadeOut = 0;
 let canvasWidth, canvasHeight;
@@ -24,11 +25,14 @@ function setup() {
   canvasWidth = windowWidth;
   canvasHeight = windowHeight;
   createCanvas(canvasWidth, canvasHeight);
+  a = createA('https://taylor.framer.ai/cyclopes#brief', 'X');
+  a.style('color: white; opacity: 0; font-size: 72px;');
+  a.position(width / 2.1, height / 1.33);
 
+  eyeX = width / 2;
+  eyeY = height / 4;
   eyeH = height / 2;
   eyeW = eyeH;
-  eyeX = width / 2;
-  eyeY = height / 2;
   irisSize = eyeW / 8;
   pupilSize = irisSize / 2;
   irisColour = color(0, 0, 255);
@@ -49,10 +53,10 @@ function draw() {
     textSize(height / 20);
     currentCharacter1 += random(0, 0.2);
 
-    text(currentString1, width / 2, height / 1.33);
+    text(currentString1, width / 2, height / 1.8);
 
     fill(fadeOut);
-    text("↓", width / 2, height / 1.1);
+    text("↓", width / 2, height / 1.25);
   }
 
   if (frameCount >= 480) {
@@ -60,8 +64,8 @@ function draw() {
   }
 
   if (blink > -2.49) {
-    irisX = width / 2;
-    irisY = height / 2;
+    irisX = eyeX;
+    irisY = eyeY;
   }
 
   irisX2 = map(
@@ -100,10 +104,11 @@ function windowResized() {
   canvasHeight = windowHeight;
   resizeCanvas(canvasWidth, canvasHeight);
 
+  eyeX = width / 2;
+  eyeY = height / 4;
   eyeH = height / 2;
   eyeW = eyeH;
-  eyeX = width / 2;
-  eyeY = height / 2;
   irisSize = eyeW / 8;
   pupilSize = irisSize / 2;
+  a.position(width / 2.1, height / 1.33);
 }
